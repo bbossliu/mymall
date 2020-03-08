@@ -19,21 +19,20 @@ public class PmsProductInfo implements Serializable {
     @Column
     private String tmId;
     @Transient
-    private List<PmsProductImage> pmsProductImageList;
+    private List<PmsProductImage> spuImageList ;
     @Transient
-    private  List<PmsProductSaleAttr> pmsProductSaleAttrList;
+    private  List<PmsProductSaleAttr> spuSaleAttrList ;
 
     public PmsProductInfo() {
     }
 
-    public PmsProductInfo(String id, String productName, String description, String catalog3Id, String tmId, List<PmsProductImage> pmsProductImageList, List<PmsProductSaleAttr> pmsProductSaleAttrList) {
-        this.id = id;
+    public PmsProductInfo(String productName, String description, String catalog3Id, String tmId, List<PmsProductImage> spuImageList, List<PmsProductSaleAttr> spuSaleAttrList) {
         this.productName = productName;
         this.description = description;
         this.catalog3Id = catalog3Id;
         this.tmId = tmId;
-        this.pmsProductImageList = pmsProductImageList;
-        this.pmsProductSaleAttrList = pmsProductSaleAttrList;
+        this.spuImageList = spuImageList;
+        this.spuSaleAttrList = spuSaleAttrList;
     }
 
     public String getId() {
@@ -76,19 +75,19 @@ public class PmsProductInfo implements Serializable {
         this.tmId = tmId;
     }
 
-    public List<PmsProductImage> getPmsProductImageList() {
-        return pmsProductImageList;
+    public List<PmsProductImage> getSpuImageList() {
+        return spuImageList;
     }
 
-    public void setPmsProductImageList(List<PmsProductImage> pmsProductImageList) {
-        this.pmsProductImageList = pmsProductImageList;
+    public void setSpuImageList(List<PmsProductImage> spuImageList) {
+        this.spuImageList = spuImageList;
     }
 
-    public List<PmsProductSaleAttr> getPmsProductSaleAttrList() {
-        return pmsProductSaleAttrList;
+    public List<PmsProductSaleAttr> getSpuSaleAttrList() {
+        return spuSaleAttrList;
     }
 
-    public void setPmsProductSaleAttrList(List<PmsProductSaleAttr> pmsProductSaleAttrList) {
-        this.pmsProductSaleAttrList = pmsProductSaleAttrList;
+    public void setSpuSaleAttrList(List<PmsProductSaleAttr> spuSaleAttrList) {
+        this.spuSaleAttrList = spuSaleAttrList;
     }
 }

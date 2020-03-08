@@ -3,11 +3,14 @@ package com.atguigu.gmall.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
 import com.atguigu.gmall.bean.PmsBaseAttrValue;
+import com.atguigu.gmall.bean.PmsBaseSaleAttr;
 import com.atguigu.gmall.mapper.PmsBaseAttrInfoMapper;
 import com.atguigu.gmall.mapper.PmsBaseAttrValueMapper;
+import com.atguigu.gmall.mapper.pmsBaseSaleAttrMapper;
 import com.atguigu.gmall.service.manage.AttrService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
@@ -27,12 +30,23 @@ public class AttrServiceImpl implements AttrService {
     @Autowired
     PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
 
+    @Autowired
+    pmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
+
 
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
         PmsBaseAttrInfo pmsBaseAttrInfo = new PmsBaseAttrInfo();
         pmsBaseAttrInfo.setCatalog3Id(catalog3Id);
         List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+       List<String> list= new ArrayList<>();
+        if(!CollectionUtils.isEmpty(pmsBaseAttrInfos)){
+            pmsBaseAttrInfos.stream()
+                            .forEach((pmsBaseAttrInfo1)->{
+                            list.add(pmsBaseAttrInfo1.getId());
+            });
+        pmsBaseAttrInfos = pmsBaseAttrInfoMapper.pmsBaseAttrinfoSelectList(list);
+        }
         return pmsBaseAttrInfos;
     }
 
@@ -42,6 +56,12 @@ public class AttrServiceImpl implements AttrService {
         pmsBaseAttrValue.setAttrId(attrId);
         List<PmsBaseAttrValue> pmsBaseAttrValues = pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
         return pmsBaseAttrValues;
+    }
+
+    @Override
+    public List<PmsBaseSaleAttr> baseSaleAttrList() {
+        List<PmsBaseSaleAttr> pmsBaseSaleAttrs = pmsBaseSaleAttrMapper.selectAll();
+        return pmsBaseSaleAttrs;
     }
 
     @Override
@@ -109,6 +129,7 @@ public class AttrServiceImpl implements AttrService {
         }
     }
 
+    //searcch时使用
     @Override
     public List<PmsBaseAttrInfo> getAttrValueListByValueId(Set<String> valueIdSet) {
         return null;

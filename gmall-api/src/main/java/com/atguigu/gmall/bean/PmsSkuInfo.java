@@ -11,7 +11,7 @@ public class PmsSkuInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     @Column
-    private String productId;
+    private String spuId;
     @Column
     private String price;
     @Column
@@ -26,16 +26,21 @@ public class PmsSkuInfo implements Serializable {
     private String catalog3Id;
     @Transient
     private String skuDefaultImg;
+
     @Transient
-    List<PmsSkuAttrValue> pmsSkuAttrValue;
+    List<PmsSkuImage> skuImageList;
+
     @Transient
-    List<PmsSkuSaleAttrValue> pmsSkuSaleAttrValue;
+    List<PmsSkuAttrValue> skuAttrValueList;
+
+    @Transient
+    List<PmsSkuSaleAttrValue> skuSaleAttrValueList;
 
     public PmsSkuInfo() {
     }
 
-    public PmsSkuInfo(String productId, String price, String skuName, String skuDesc, String weight, String tmId, String catalog3Id, String skuDefaultImg, List<PmsSkuAttrValue> pmsSkuAttrValue, List<PmsSkuSaleAttrValue> pmsSkuSaleAttrValue) {
-        this.productId = productId;
+    public PmsSkuInfo(String spuId, String price, String skuName, String skuDesc, String weight, String tmId, String catalog3Id, String skuDefaultImg, List<PmsSkuImage> skuImageList, List<PmsSkuAttrValue> skuAttrValueList, List<PmsSkuSaleAttrValue> skuSaleAttrValueList) {
+        this.spuId = spuId;
         this.price = price;
         this.skuName = skuName;
         this.skuDesc = skuDesc;
@@ -43,8 +48,17 @@ public class PmsSkuInfo implements Serializable {
         this.tmId = tmId;
         this.catalog3Id = catalog3Id;
         this.skuDefaultImg = skuDefaultImg;
-        this.pmsSkuAttrValue = pmsSkuAttrValue;
-        this.pmsSkuSaleAttrValue = pmsSkuSaleAttrValue;
+        this.skuImageList = skuImageList;
+        this.skuAttrValueList = skuAttrValueList;
+        this.skuSaleAttrValueList = skuSaleAttrValueList;
+    }
+
+    public String getSpuId() {
+        return spuId;
+    }
+
+    public void setSpuId(String spuId) {
+        this.spuId = spuId;
     }
 
     public String getId() {
@@ -53,14 +67,6 @@ public class PmsSkuInfo implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     public String getPrice() {
@@ -119,19 +125,27 @@ public class PmsSkuInfo implements Serializable {
         this.skuDefaultImg = skuDefaultImg;
     }
 
-    public List<PmsSkuAttrValue> getPmsSkuAttrValue() {
-        return pmsSkuAttrValue;
+    public List<PmsSkuImage> getSkuImageList() {
+        return skuImageList;
     }
 
-    public void setPmsSkuAttrValue(List<PmsSkuAttrValue> pmsSkuAttrValue) {
-        this.pmsSkuAttrValue = pmsSkuAttrValue;
+    public void setSkuImageList(List<PmsSkuImage> skuImageList) {
+        this.skuImageList = skuImageList;
     }
 
-    public List<PmsSkuSaleAttrValue> getPmsSkuSaleAttrValue() {
-        return pmsSkuSaleAttrValue;
+    public List<PmsSkuAttrValue> getSkuAttrValueList() {
+        return skuAttrValueList;
     }
 
-    public void setPmsSkuSaleAttrValue(List<PmsSkuSaleAttrValue> pmsSkuSaleAttrValue) {
-        this.pmsSkuSaleAttrValue = pmsSkuSaleAttrValue;
+    public void setSkuAttrValueList(List<PmsSkuAttrValue> skuAttrValueList) {
+        this.skuAttrValueList = skuAttrValueList;
+    }
+
+    public List<PmsSkuSaleAttrValue> getSkuSaleAttrValueList() {
+        return skuSaleAttrValueList;
+    }
+
+    public void setSkuSaleAttrValueList(List<PmsSkuSaleAttrValue> skuSaleAttrValueList) {
+        this.skuSaleAttrValueList = skuSaleAttrValueList;
     }
 }

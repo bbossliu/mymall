@@ -25,6 +25,7 @@
         <module>../gmall-fileupload-service</module>
         <module>../gmall-test-web</module>
         <module>../gmall-netfix-zuul</module>
+        <module>../gmall-xxxjob-web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- lookup parent from repository -->
@@ -274,6 +275,14 @@
                     <version>Greenwich.SR3</version>
                     <type>pom</type>
                     <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>0.2.1.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>

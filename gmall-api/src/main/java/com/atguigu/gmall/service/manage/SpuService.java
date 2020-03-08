@@ -1,5 +1,6 @@
 package com.atguigu.gmall.service.manage;
 
+import com.atguigu.gmall.bean.PmsProductImage;
 import com.atguigu.gmall.bean.PmsProductInfo;
 import com.atguigu.gmall.bean.PmsProductSaleAttr;
 import com.atguigu.gmall.bean.PmsProductSaleAttrValue;
@@ -19,4 +20,9 @@ public interface SpuService {
     List<PmsProductSaleAttrValue> spuSaleAttrValue(PmsProductSaleAttr pmsProductSaleAttr);
 
     List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String productId, String skuId);
+
+    List<PmsProductImage> spuImageList(String productId);
+
+    //增加spu信息
+    int saveSpuInfo(PmsProductInfo pmsProductInfo);
 }

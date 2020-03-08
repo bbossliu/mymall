@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Controller
 @CrossOrigin //跨域注解
+//@RequestMapping("manage")
 public class CatalogController {
     @Reference
     CataloagService cataloagService;

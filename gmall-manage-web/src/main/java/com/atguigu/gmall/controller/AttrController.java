@@ -4,6 +4,8 @@ import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
 import com.atguigu.gmall.bean.PmsBaseAttrValue;
+import com.atguigu.gmall.bean.PmsBaseSaleAttr;
+import com.atguigu.gmall.bean.PmsProductSaleAttr;
 import com.atguigu.gmall.service.manage.AttrService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.List;
 //@CrossOrigin跨域问题,前端服务器访问后端服务器 ，实现前后端分离
 @Controller
 @CrossOrigin
+//@RequestMapping("manage")
 public class AttrController {
 
     @Reference
@@ -42,5 +45,12 @@ public class AttrController {
         pmsBaseAttrInfo.setId("44");
         attrService.saveAttrInfo(pmsBaseAttrInfo);
         return "save success";
+    }
+
+    @RequestMapping("baseSaleAttrList")
+    @ResponseBody
+    public List<PmsBaseSaleAttr> baseSaleAttrList(){
+        List<PmsBaseSaleAttr> pmsBaseSaleAttrs = attrService.baseSaleAttrList();
+        return pmsBaseSaleAttrs;
     }
 }

@@ -1,5 +1,6 @@
 package com.atguigu.gmall.comtroller;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/provider")
+
 public class ProviderController {
 
     @GetMapping("/helloProvider")
