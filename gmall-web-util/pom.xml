@@ -18,7 +18,15 @@
             <groupId>com.atguigu.gmall</groupId>
             <artifactId>gmall-common-util</artifactId>
             <version>1.0-SNAPSHOT</version>
+
         </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.gmall</groupId>
+            <artifactId>gmall-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -29,10 +37,12 @@
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
         </dependency>
+
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-ext</artifactId>
@@ -44,6 +54,54 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.0</version>
         </dependency>
+
+
+        <!-- Swagger2 Begin -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
+
+        <!-- Swagger2 End -->
+
+        <!--springcloud-gatway start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-gateway</artifactId>-->
+        <!--</dependency>-->
+
+        <!--springcloud-gatway stop-->
+
+        <!--&lt;!&ndash;引入springsecurity的依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
+
+        <!--&lt;!&ndash;引入springsecurity auth2.0的依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security.oauth.boot</groupId>-->
+            <!--<artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
+        <!--</dependency>-->
 
     </dependencies>
 

@@ -1,0 +1,33 @@
+#访问端口配置
+server:
+  port: 8081
+
+#日志级别 配置
+logging:
+  level:
+    root: info
+
+#dubbo配置
+spring:
+  #thymeleaf配置
+  thymeleaf:
+    cache: false     #关闭thymeleaf的缓存（热部署）
+    mode: LEGACYHTML5 #松校验
+  main:
+    allow-bean-definition-overriding: true
+
+#dubbo:
+#  application:
+#    name: passport-web  #dubbo中的服务名称
+#  protocol:
+#    name: dubbo   #dubbo消费者和生产者之间通信的协议名称
+#  registry:
+#    protocol: zookeeper #zookeeper的通讯协议名称（提供者，消费者与注册中心之间的通讯）
+#    address: 192.168.2.129:2181
+#  base-package: com.atguigu.gmall  #dubbo服务扫描路径
+#  consumer:
+#    timeout: 600000
+#    #dubbo在controller访问service时候会每间隔一秒向service发送请求，3秒过后默认超时错误
+#    #实际开发中断点调试时间超过3秒
+#    # 所以设置超时时间1000=1s
+#    check: false  #是否检查服务是否启动，允许消费者先于提供者启动
