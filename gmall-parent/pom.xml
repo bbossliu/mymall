@@ -26,6 +26,13 @@
         <module>../gmall-test-web</module>
         <module>../gmall-netfix-zuul</module>
         <module>../gmall-xxxjob-web</module>
+        <module>../gmall-nitem-web</module>
+        <module>../gmall-cart-web</module>
+        <module>../gmall-cart-service</module>
+        <module>../gmall-order-service</module>
+        <module>../gmall-order-web</module>
+        <module>../gmall-payment-web</module>
+        <module>../gmall-payment-service</module>
     </modules>
     <packaging>pom</packaging>
     <!-- lookup parent from repository -->

@@ -4,8 +4,10 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
 import com.atguigu.gmall.bean.PmsBaseAttrValue;
 import com.atguigu.gmall.bean.PmsBaseSaleAttr;
+import com.atguigu.gmall.bean.PmsProductSaleAttr;
 import com.atguigu.gmall.mapper.PmsBaseAttrInfoMapper;
 import com.atguigu.gmall.mapper.PmsBaseAttrValueMapper;
+import com.atguigu.gmall.mapper.PmsProductSaleAttrMapper;
 import com.atguigu.gmall.mapper.pmsBaseSaleAttrMapper;
 import com.atguigu.gmall.service.manage.AttrService;
 import org.apache.commons.lang3.StringUtils;
@@ -134,4 +136,6 @@ public class AttrServiceImpl implements AttrService {
     public List<PmsBaseAttrInfo> getAttrValueListByValueId(Set<String> valueIdSet) {
         return null;
     }
+
+
 }

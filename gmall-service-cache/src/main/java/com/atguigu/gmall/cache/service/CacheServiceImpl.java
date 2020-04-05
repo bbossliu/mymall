@@ -1,5 +1,6 @@
 package com.atguigu.gmall.cache.service;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.cache.service.ICacheService;
 import com.atguigu.gmall.util.RedisUtil;
@@ -57,6 +58,42 @@ public class CacheServiceImpl implements ICacheService {
             returnBorkenConnection(conn);
         }
         return -1;
+    }
+
+    //如果不存在名称为key的string，则向库中添加string，名称为key，值为value
+    @Override
+    public long setnx(String key, String value) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return -1;
+        }
+        try {
+            long result = conn.setnx(key, value);
+            returnConnection(conn);
+            return result;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean set(String key, String value, String nxxx, String expx, long time) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return false;
+        }
+        try {
+            String result = conn.set(key, value,nxxx,expx,time);
+            returnConnection(conn);
+            if(!StringUtils.isEmpty(result) && result.equals("OK")){
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return false;
     }
 
     /**
@@ -288,7 +325,18 @@ public class CacheServiceImpl implements ICacheService {
 
     @Override
     public long delete(String key) {
-        return 0;
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return -1;
+        }
+        try {
+            long result = conn.del(key);
+            returnConnection(conn);
+            return result;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return -1;
     }
 
 
@@ -1074,4 +1122,107 @@ public class CacheServiceImpl implements ICacheService {
         }
         return 0;
     }
+
+    /**
+     *
+     * @param key
+     * @param map
+     */
+    public boolean hmset(String key, Map<String,String> map ) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return false;
+        }
+        try {
+            String hmset = conn.hmset(key, map);
+            returnConnection(conn);
+            if(hmset.equals("OK")){
+                return true;
+            }
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param key
+     * @param fileds
+     */
+    public List<String> hmget(String key, String... fileds) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return null;
+        }
+        try {
+            List<String> list = conn.hmget(key, fileds);
+            returnConnection(conn);
+            return list;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return null;
+    }
+
+    /**
+     * 根据key 查询value
+     *
+     * @param key
+     */
+    public List<String> hval(String key) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return null;
+        }
+        try {
+            List<String> list = conn.hvals(key);
+            returnConnection(conn);
+            return list;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return null;
+    }
+
+    /**
+     * 设置过期时间
+     *
+     * @param key
+     */
+    public void setex(String key, int seconds, String value) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return ;
+        }
+        try {
+            conn.setex(key, seconds, value);
+            returnConnection(conn);
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+    }
+
+    /**
+     * lua脚本
+     * @param script
+     * @param keys
+     * @param args
+     *
+     */
+    public Object eval(String script, List<String> keys, List<String> args) {
+        Jedis conn = redisUtil.getJedis();
+        if (conn == null) {
+            return null;
+        }
+        try {
+            Object object = conn.eval(script, keys, args);
+            returnConnection(conn);
+            return object;
+        } catch (Exception e) {
+            returnBorkenConnection(conn);
+        }
+        return null;
+    }
+
 }

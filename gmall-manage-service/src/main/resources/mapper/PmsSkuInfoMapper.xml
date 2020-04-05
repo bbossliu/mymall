@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.gmall.mapper.PmsSkuInfoMapper">
+
+
+      <select id="selectSkuInfoAndSkuImgBySkuId" resultMap="selectSkuInfoAndSkuImgBySkuIdMap" parameterType="pmsSkuInfo">
+          select psi.* from pms_sku_info psi where psi.id = #{id}
+      </select>
+
+
+    <resultMap id="selectSkuInfoAndSkuImgBySkuIdMap" type="pmsSkuInfo">
+            <id property="id" column="id"></id>
+            <collection ofType="pmsSkuImage" property="skuImageList" select="com.atguigu.gmall.mapper.PmsSkuImageMapper.selectSkuImgBySkuId" column="id">
+
+            </collection>
+    </resultMap>
+
+    <select id="skuInfoCheckBysaleAttrValueIds" resultMap="skuInfoCheckBysaleAttrValueIdsMap">
+        SELECT
+            psi.*,ssav.*,psi.id as pid, ssav.id as sid
+        FROM
+            pms_sku_info psi
+            INNER JOIN pms_sku_sale_attr_value ssav ON psi.id = ssav.sku_id
+        WHERE
+            psi.spu_id = #{spuId}
+    </select>
+
+    <resultMap id="skuInfoCheckBysaleAttrValueIdsMap" type="pmsSkuInfo" autoMapping="true">
+        <id property="id" column="pid"></id>
+        <collection property="skuSaleAttrValueList" autoMapping="true" ofType="pmsSkuSaleAttrValue">
+            <id property="id" column="sid"></id>
+        </collection>
+    </resultMap>
+
+</mapper>

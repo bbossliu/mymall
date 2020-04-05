@@ -1,0 +1,8 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+dubbo:
+  application:
+    qos-port: 22221
+  protocol:
+    port: 20881

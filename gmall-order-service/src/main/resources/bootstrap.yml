@@ -1,0 +1,14 @@
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1 #注册中心地址
+      config:
+        shared-dataids: service-dev.yml,service-order-dev.yml #配置名称
+        namespace: e5df242c-7181-4bab-b697-53bde3056484 #命名空间
+        encode: UTF-8 #字符编码
+        file-extension: yml   #文件后缀名称
+---
+spring:
+  profiles:
+    active: dev

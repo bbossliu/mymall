@@ -3,6 +3,8 @@ package com.atguigu.gmall.service.manage;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
 import com.atguigu.gmall.bean.PmsBaseAttrValue;
 import com.atguigu.gmall.bean.PmsBaseSaleAttr;
+import com.atguigu.gmall.bean.PmsProductSaleAttr;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
@@ -22,4 +24,5 @@ public interface AttrService {
     void saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
 
     List<PmsBaseAttrInfo> getAttrValueListByValueId(Set<String> valueIdSet);
+
 }

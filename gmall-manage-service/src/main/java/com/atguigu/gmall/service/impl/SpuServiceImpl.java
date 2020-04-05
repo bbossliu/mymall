@@ -79,9 +79,11 @@ public class SpuServiceImpl implements SpuService {
         return null;
     }
 
+    //查询spu商品销售属性和销售属性值
     @Override
     public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String productId, String skuId) {
-        return null;
+        List<PmsProductSaleAttr> pmsProductSaleAttrList = pmsProductSaleAttrMapper.selectspuSaleAttrListCheckBySku(productId, skuId);
+        return pmsProductSaleAttrList;
     }
 
     //保存spu商品信息

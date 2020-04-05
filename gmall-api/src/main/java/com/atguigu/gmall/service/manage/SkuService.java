@@ -14,7 +14,7 @@ public interface SkuService {
 
     void savePmsSkuInfo(PmsSkuInfo pmsSkuInfo);
 
-    PmsSkuInfo getSkuById(String skuId , String ip);
+    PmsSkuInfo getSkuById(String skuId , String ip) throws InterruptedException;
 
     List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(String productId);
 
@@ -22,5 +22,7 @@ public interface SkuService {
 
     boolean checkPrice(String productSkuId, String productPrice);
 
+
+    List<PmsSkuInfo> skuInfoCheckBysaleAttrValueIds(String spuId);
 
 }

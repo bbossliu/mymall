@@ -29,6 +29,7 @@ public class FileUploadController {
             String size = String.valueOf(file.getSize());
             String originalFilename = file.getOriginalFilename();
             String imgUrl = fileUploadService.fileUpload(bytes, name, size, originalFilename);
+            System.out.println(imgUrl);
             return imgUrl;
         }catch (Exception e){
             e.printStackTrace();

@@ -156,4 +156,18 @@ public interface ICacheService {
 
     public  long expire(String key, int seconds);
 
+    public  long setnx(String key, String value);
+
+    public  boolean set(String key, String value, String nxxx, String expx, long time);
+
+    public boolean hmset(String key, Map<String,String> map );
+
+    public List<String> hmget(String key, String... fileds) ;
+
+    public List<String> hval(String key) ;
+
+    public void setex(String key, int seconds, String value) ;
+
+    public Object eval(String script, List<String> keys, List<String> args) ;
+
 }

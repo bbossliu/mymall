@@ -30,7 +30,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("myMall API 文档")
                 .description("myMall gateway 网关接口，http://www.mymall.com")
-                .termsOfServiceUrl("htpp://www.mymall.com:80")
+                .termsOfServiceUrl("http://localhost:8084")
                 .version("1.0.0")
                 .build();
     }
